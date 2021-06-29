@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/03c6f01f66.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <link rel="stylesheet" href="Email-panel.css">
+</head>
+<body>
+
+    <section class="sidebar">
+        <div class="logo_content">
+          <div class="logo">
+            <i class='bx bx-mail-send' ></i>
+            <div class="logo_name">Email Panel</div>
+          </div>
+          <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav_list">
+        
+          <li >
+            <a href="#" id="create-campaign-email">
+              <i class='bx bx-grid-alt' ></i>
+              <span class="links_name">Create a Campaign</span>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#" id="create-email">
+              <i class='bx bx-user' ></i>
+              <span class="links_name">Create an Email</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class='bx bx-chat' ></i>
+              <span class="links_name">Existing Email</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class='bx bx-pie-chart-alt-2' ></i>
+              <span class="links_name">Email A/B Test</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class='bx bx-folder' ></i>
+              <span class="links_name">Sending Campaign</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class='bx bx-cart-alt' ></i>
+              <span class="links_name">Approving Campaign</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class='bx bx-heart' ></i>
+              <span class="links_name">My Campaigns</span>
+            </a>
+          </li>
+        </ul>
+      </section>     <!--SIDEBAR ENDS-->
+    
+    
+      <section class="home_content">
+        <div  class="temp-create"  style="display: none;">
+           <!--BASIC-->
+                <div class = "basic">
+                    <header>
+                        <p>•&nbsp;Basic&nbsp;•</p> 
+                    </header><!-- /header --> 
+                    <form class="basic-form">
+                        <div>
+                              <label for="fname"><i>From:</i></label>
+                              <input style="height:30px;"type="text" id="fname" name="fname">
+                        </div><br>
+                        <div>
+                              <label for="fname"><i>Subject Line:</i></label>
+                              <input style="height:30px;"type="text" id="fname" name="fname">
+                        </div><br>
+                        <div class="attach-email">
+                            <span>
+                                  <label for="lname"><i>Attachments:</i></label>
+                            </span> 
+                            <span>
+                                  <textarea placeholder="Enter Links here (if any)"></textarea>
+                            </span> 
+                            <span> 
+                                  <input style="cursor: pointer;width: fit-content; border:none;" type="file" id="myFile">
+                            </span> 
+                        </div><br>
+                    </form>
+                </div>    <!--BASIC END-->
+        
+    
+    
+         <!--CONTENT-->
+            <div class = "content">
+               <header>
+                        <p>•&nbsp;Content&nbsp;•</p> 
+               </header><!-- /header --> 
+                 <form class="content-form">
+                    <div class="content-text-box">
+                              <span><label for=""><i>Content:</i></label></span><br>
+                              <span><textarea placeholder="Enter Content here"></textarea></span>
+                    </div><br>
+    
+                    <div>
+                    
+                              <span class="tab-1">
+                              <label for="cars"><i>Existing Email:</i></label>
+                                      <span>  
+                                        <select name="cars" id="cars" style="width: max-content; height:30px;background-color:white;border: 1.08329px solid #BBBBBB;" >
+                                              <option value="" selected hidden></option>
+                                              <option value="">email1@xyz.com</option>
+                                              <option value="">email2@xyz.com</option>
+                                        </select> 
+                                      </span>  
+                              </span>  <br><br>
+                              <span class="tab-2">
+                                      <label for="fname"><i>Send On:</i></label> 
+                                      <input style=" background:white;width: max-content;height:30px; border: 1.08329px solid #BBBBBB;" type="date" id="datePicker" name="">
+                              </span>
+                                <script>
+                                    document.getElementById('datePicker').valueAsDate = new Date();
+                                </script> 
+                    </div><br>
+                </form>     <!--content form ends-->
+            </div>  <!--CONTENT END-->
+    
+    
+    
+            <!--TEMPLATE-->
+            <div class = "template">  
+                <header>
+                    <p>•&nbsp;Template&nbsp;•</p> 
+                </header><!-- /header --> 
+                        
+                                <div class="grid-container">
+                                <div class="grid-item"><button onclick=" window.open('./template1.html', '_blank');" style="background-image: url('./templates-images/1-min.JPG');"></button></div>
+                                <div class="grid-item"><button onclick=" window.open('./template2.html', '_blank');"style="background-image: url('./templates-images/2-min.JPG');"></button></div>
+                                <div class="grid-item"><button onclick=" window.open('./template3.html', '_blank');"style="background-image: url('./templates-images/3-min.JPG');"></button></div>  
+                                <div class="grid-item"><button onclick=" window.open('./template4.html', '_blank');"style="background-image: url('./templates-images/4-min.JPG');"></button></div> 
+                                <div class="grid-item"><button onclick=" window.open('./template1.html', '_blank');" style="background-image: url('./templates-images/1-min.JPG');"></button></div>
+                                </div>
+    
+            <!-- added -->
+            <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+    
+            </div>     <!--TEMPLATE END-->  
+
+  </div> 
+            <div class = "create-camp" >
+              <header>
+                       <p>•&nbsp;Create Campaign&nbsp;•</p> 
+              </header><!-- /header --> 
+                <form class="create-camp-form">
+                   <div class="create-camp-text-box">
+                             <span><label for=""><i>Title:</i></label></span><br>
+                             <span><input type="text"></span>
+                             
+                   </div><br>
+   
+                   <div>
+                           <span>
+                               <label for="fname"><i>People: </i>45</label> <br>
+                               <label for="fname"><i>Blocked: </i>5</label> 
+
+                             </span>
+                               
+                   </div>
+                  <br>
+<!-- create campaign start here -->
+                   <div class="attach-create-camp">
+                    <span>
+                          <label for="lname">Target:</label>
+                    </span> 
+                    <span>
+                        <textarea placeholder="Smart List"></textarea>
+                    </span> 
+                    <span> 
+                      <br>  <input style="cursor: pointer; border:none;width:min-content" type="file" id="myFile">
+                    </span> 
+                </div><br>
+               </form>     <!--content form ends-->
+              <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+            </div>  <!--Create campaign END-->  
+            </section>
+<script>
+                let btn = document.querySelector("#btn");
+                let sidebar = document.querySelector(".sidebar");
+              
+             
+                btn.onclick = function() {
+                  sidebar.classList.toggle("active");
+                  if(btn.classList.contains("bx-menu")){
+                    btn.classList.replace("bx-menu" , "bx-menu-alt-right");
+                  }else{
+                    btn.classList.replace("bx-menu-alt-right", "bx-menu");
+                  }
+                }
+
+
+                $(document).ready(function(){
+                            $("#create-email").click(function(){
+                            $(".temp-create").show();
+                                      $(".create-camp").hide();
+                                    });
+
+
+                            $("#create-campaign-email").click(function(){
+                              $(".create-camp").show();
+                              $(".temp-create").hide();
+                            });
+                       });
+</script>
+    
+</body>
+</html>

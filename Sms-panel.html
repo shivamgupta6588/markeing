@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/03c6f01f66.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+    <link rel="stylesheet" href="Sms-panel.css">
+</head>
+<body>
+
+    <section class="sidebar">
+        <div class="logo_content">
+          <div class="logo">
+            <i class='bx bx-mail-send' ></i>
+            <div class="logo_name">Sms Panel</div>
+          </div>
+          <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav_list">
+        
+          <li >
+            <a href="#" id="create-campaign">
+              <i class='bx bx-grid-alt' ></i>
+              <span class="links_name">Create a Campaign</span>
+            </a>
+          
+          </li>
+          <li>
+            <!--  class="active" -->
+            <a href="#" id="create-sms">
+              <i class='bx bx-user' ></i>
+              <span class="links_name">Create a Sms</span>
+            </a>
+            
+          </li>
+          <li>
+            <a href="#">
+              <i class='bx bx-chat' ></i>
+              <span class="links_name">Send automated sms</span>
+            </a>
+          
+          </li>
+          <li>
+            <a href="#">
+              <i class='bx bx-pie-chart-alt-2' ></i>
+              <span class="links_name">Sms A/B Test</span>
+            </a>
+  
+          </li>
+          <li>
+            <a href="#">
+              <i class='bx bx-folder' ></i>
+              <span class="links_name">A/B results</span>
+            </a>
+            
+          </li>
+          
+        </ul>
+      </section>     <!--SIDEBAR ENDS-->
+    
+    
+      <section class="home_content">
+           <!--BASIC-->
+                <div class = "basic" style="display: none;">
+                    <header>
+                        <p>•&nbsp;SMS&nbsp;•</p> 
+                    </header><!-- /header --> 
+                    <form class="basic-form">
+                        <div>
+                              <label for="fname"><i>Sms From:</i></label>
+                              <input style="height:30px;" placeholder="Sender Name"type="text" id="fname" name="fname">
+                        </div><br>
+                        <div>
+                              <label for="fname"><i>Sms Text:</i></label>
+                              <textarea style=" width: 100%;min-height: 80px;padding: 12px 20px;margin-bottom: 1rem;
+                              box-sizing: border-box;border: 1.08329px solid #BBBBBB; font-size: 0.800rem;
+                              resize: none;overflow-y: auto ;font-family: Poppins;" placeholder="Enter content here"></textarea>
+                              
+                        </div><br>
+                        <div class="attach-email">
+                            <span>
+                                  <label for="lname">Recipents:</label>
+                            </span> 
+                            <span>
+                                  <textarea placeholder="Enter Manually"></textarea>
+                            </span> 
+                            <span> 
+                                <label for="lname">or Upload contacts here:</label>
+                                 <br>  
+                                  <input style="cursor: pointer; border:none;width:min-content" type="file" id="myFile">
+                            </span> 
+                        </div><br>
+                        <div>
+                            <label for="fname">Send On:</label>
+                            <input style=" background:whitesmoke;width: max-content;height:30px;" type="date" id="datePicker" name="">
+                            &nbsp;
+                            <input  style=" background:whitesmoke;width: max-content;height:30px;"type="time" id="timePicker" name="">
+                            <!-- pattern="[0-9]{2}:[0-9]{2}" -->
+                            <script>
+                                   
+                                   
+                                    // Function which returns a minimum of two digits in case the value is less than 10
+                                    const getTwoDigits = (value) => value < 10 ? `0${value}` : value;
+
+                                    const formatDate = (date) => {
+                                    const day = getTwoDigits(date.getDate());
+                                    const month = getTwoDigits(date.getMonth() + 1); // add 1 since getMonth returns 0-11 for the months
+                                    const year = date.getFullYear();
+
+                                    return `${year}-${month}-${day}`;
+                                    }
+
+                                    const formatTime = (date) => {
+                                    const hours = getTwoDigits(date.getHours());
+                                    const mins = getTwoDigits(date.getMinutes());
+
+                                    return `${hours}:${mins}`;
+                                    }
+
+
+                                    var date= new Date();
+                                    document.getElementById('timePicker').value=formatTime(date);
+                                  
+                                    $('#datePicker').val(new Date().toJSON().slice(0,10));    
+                                    
+
+                            </script>
+                        </div><br>
+                    </form>
+            <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+
+                </div>    <!--BASIC END-->
+                
+ 
+
+              <!--CONTENT-->
+            <div class = "create-camp" >
+              <!-- style="display: none;" -->
+              <header>
+                       <p>•&nbsp;Create Campaign&nbsp;•</p> 
+              </header><!-- /header --> 
+                <form class="create-camp-form">
+                   <div class="create-camp-text-box">
+                             <span><label for=""><i>Title:</i></label></span><br>
+                             <span><input type="text"></span>
+                             
+                   </div><br>
+   
+                   <div>
+                           <span>
+                               <label for="fname"><i>People: </i>45</label> <br>
+                               <label for="fname"><i>Blocked: </i>5</label> 
+
+                               <!-- <input style=" background:white;width: max-content;height:30px; border: 1.08329px solid #BBBBBB;" type="date" id="datePicker" name=""> -->
+                             </span>
+                               
+                   </div><br>
+
+                   <div class="attach-create-camp">
+                    <span>
+                          <label for="lname">Target:</label>
+                    </span> 
+                    <span>
+                        <textarea placeholder="Smart List"></textarea>
+                    </span> 
+                    <span> 
+                      <br>  <input style="cursor: pointer; border:none;width:min-content" type="file" id="myFile">
+                    </span> 
+                </div><br>
+               </form>     <!--content form ends-->
+              <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+            </div>  <!--CONTENT END-->
+   
+
+               </section>
+         
+             
+      <script>
+                let btn = document.querySelector("#btn");
+                let sidebar = document.querySelector(".sidebar");
+             
+                btn.onclick = function() {
+                  sidebar.classList.toggle("active");
+                  if(btn.classList.contains("bx-menu")){
+                    btn.classList.replace("bx-menu" , "bx-menu-alt-right");
+                  }else{
+                    btn.classList.replace("bx-menu-alt-right", "bx-menu");
+                  }
+                }
+
+
+
+
+                       $(document).ready(function(){
+                            $("#create-sms").click(function(){
+                            $(".basic").show();
+                                      $(".create-camp").hide();
+                                    });
+
+
+                            $("#create-campaign").click(function(){
+                              $(".create-camp").show();
+                              $(".basic").hide();
+                            });
+                       });
+              
+      </script>
+    
+</body>
+</html>
