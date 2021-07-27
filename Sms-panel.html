@@ -356,7 +356,7 @@ border-radius: 3em;
               <li><a href="./Current.html"><i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard</a></li>
               <li ><a href="./Email-panel.html" ><i class="fas fa-envelope"></i>&nbsp;Email</a> </li>
               <li class="active"><a href="./Sms-panel.html" ><i class="fas fa-sms"></i>&nbsp;SMS</a></li>
-              <li ><a href="#" ><i class="fas fa-comment-alt"></i>&nbsp;Messenger</a></li>
+              <!-- <li ><a href="#" ><i class="fas fa-comment-alt"></i>&nbsp;Messenger</a></li> -->
               <li><a href="#" ><i class="fas fa-user"></i>&nbsp;Account</a></li>
     </ul>
   </header>
@@ -739,14 +739,14 @@ function drawChart() {
   ['Task', 'Hours per Day'],
   ['Read', 8],
   ['Completed', 8],
-  ['Clicks', 4],
-  ['Bounced', 2],
-  ['Unsubscribed', 1],
-  ['Mark as Spam', 1]
+  ['Clicks', 5],
+  ['Bounced', 4],
+  ['Unsubscribed', 3],
+  ['Mark as Spam', 3]
 ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'width':650, 'height':500,};
+  var options = {'width':750, 'height':500,};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
