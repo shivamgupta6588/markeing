@@ -4,15 +4,493 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Email-Panel</title>
 
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/03c6f01f66.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
-    <link rel="stylesheet" href="Email-panel.css">
+    
+    <link rel="stylesheet" href="style.css">
+    <!-- just for the haeder -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+/**********SIDEBAR*************/
+/* #nav_list li.active a{
+color: gray;} */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+  }
+
+/**********SIDEBAR*************/
+
+
+
+
+::selection{
+  color: #fff;
+  background: #11101d;
+}
+.sidebar{
+  position: fixed;
+  /* change */
+  margin-top: 0px;
+  /* top: auto; */
+  left: 0;
+  height: 100%;
+  width: 78px;
+  background: #09203f;
+  /*linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);*/
+  padding: 6px 14px;
+  z-index: 9;
+  transition: all 0.2s ease;
+}
+.sidebar.active{
+  width: 250px;
+}
+.sidebar .logo_content .logo{
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+.sidebar.active .logo_content .logo{
+  opacity: 1;
+  pointer-events: none;
+}
+.logo_content .logo i{
+  font-size: 28px;
+  margin-right: 5px;
+}
+.logo_content .logo .logo_name{
+  font-size: 20px;
+  font-weight: 400;
+}
+.sidebar #btn{
+  position: absolute;
+  color: #fff;
+  top: 6px;
+  left: 50%;
+  font-size: 22px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  transform: translateX(-50%);
+}
+.sidebar.active #btn{
+  left: 90%;
+}
+.sidebar ul{
+  margin-top: 20px;
+}
+.sidebar ul li{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin: 5px ;
+  list-style: none;
+  line-height: 50px;
+  
+}
+
+.sidebar ul li a{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 12px;
+  white-space: nowrap;
+  width: 100%;
+  /* height:mazzzzzzz; */
+  transition: all 0.4s ease;
+}
+.sidebar ul li.active a{
+  background: #fff;
+  color: #11101d;
+  
+  
+}
+.sidebar ul li a:hover{
+  color: #11101d;
+  background: #fff;
+}
+.sidebar ul li i{
+  font-size: 18px;
+  font-weight: 400;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+  text-align: center;
+}
+.sidebar .links_name{
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.sidebar.active .links_name{
+  transition: 0s;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+/*******HOME CONTENT******/
+
+ .home_content{
+  /* position: absolute; */
+ /*height: 100%;
+  width: calc(100% - 78px);*/
+  /* left: 78px; */
+  /*background: linear-gradient(to top, white 0%, #dfe9f3 100%);
+  /*#f3e7e9;*/
+  margin-left: 78px;
+  /* margin: 0; */
+  padding: 0;
+  /* top: 0; */
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2px);
+  transition: all 0.5s ease;
+}
+.sidebar.active ~ .home_content{
+  z-index: 1;
+}
+
+/* .sidebar.active ~ .home_content{
+  width: calc(100% - 260px);
+ margin-left: 260px;
+} */
+
+
+
+/********BASIC********/
+.basic{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1.5px solid #D7E2EF;
+  /* height: 80%; */
+  max-width: 45rem;
+  /* margin: 6rem 0 0 13rem; */
+  margin:auto;
+  
+  background: white;
+  box-shadow: 0px 0px 31.9358px 19.1615px rgba(0, 0, 0, 0.10);
+ 
+}
+
+.basic header{
+  color: #DE7FD3;
+  text-align: center;
+  font-weight: 800;
+  background: #09203f;
+  font-size: 1.5rem;
+  font-family: Roboto Slab;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.basic hr{
+  border: 1.5px solid #DE7FD3;
+  width: 100%;
+}
+
+.basic-form{
+  /* margin-left: 7rem; */
+  margin: 1rem auto ;
+  padding: 1em;
+  /* margin-top: 2rem; */
+}
+/*background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);*/
+.basic-form div{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+        /* for font */
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'Poppins';
+  text-decoration: none;
+    /* font-weight: 500; */
+    /* color: #C19A6B; */
+  font-style: normal;
+  color: #595959;
+ 
+}
+
+.basic-form div input{
+  border: 1.08329px solid #BBBBBB;
+  background: #FFFFFF;
+  width: 100%;
+}
+
+.attach-email textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px 20px;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    border: 1.08329px solid #BBBBBB; 
+    font-size: 0.800rem;
+    resize: none;
+    overflow-y: auto ;
+    font-family: Poppins;
+}
+
+.attach-email{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100%;
+}
+    
+/**********CONTENT**********/
+
+.content{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1.5px solid #D7E2EF;
+  max-width: 45rem;
+  margin: 6rem auto;
+  background: white;
+  box-shadow: 0px 0px 31.9358px 19.1615px rgba(0, 0, 0, 0.10);
+  font-family: Poppins;
+  color: #595959;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.content header{
+  color: #DE7FD3;
+  text-align: center;
+  font-weight: 800;
+  background: #09203f;
+  font-size: 1.5rem;
+  font-family: Roboto Slab;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.content-form{
+ 
+  margin: 1rem auto ;
+  padding: 1em;
+}
+
+.content-text-box textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1.08329px solid #BBBBBB; 
+    font-size: 0.800rem;
+    resize: none;
+    overflow-y: auto ;
+    font-family: Poppins;
+}
+
+
+
+/*******TEMPLATE*********/
+
+.template{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1.5px solid #D7E2EF;
+  height: max-content;
+  max-width: 45rem;
+  margin: 6rem auto;
+  background: white;
+  box-shadow: 0px 0px 31.9358px 19.1615px rgba(0, 0, 0, 0.10);
+  font-family: 'Poppins';
+
+}
+
+.template header{
+  color: #DE7FD3;
+  text-align: center;
+  font-weight: 800;
+  background: #09203f;
+  font-size: 1.5rem;
+  font-family: Roboto Slab;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.grid-container{
+  display: flex;
+
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem auto;
+  /* width: 100%; */
+  
+}
+.grid-item{
+margin: 0.5rem;
+/* width: 100%; */
+border: 5px solid gray;
+}
+
+
+
+.grid-container button{
+  min-height:300px;
+  min-width: 300px; 
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+/* for giving grid item size small on mobile */
+@media only screen and (max-width: 720px){
+  .grid-container button{
+    min-height:200px;
+    min-width: 200px; }
+}
+
+
+
+  
+
+      #b3{
+           margin: 0;
+          padding: 0;
+      
+        }
+        
+
+
+/**********Create camp**********/
+
+.create-camp, .ab-test,.sending-Campaign,.existing-email,.approving-Campaign,.my-Campaign{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1.5px solid #D7E2EF;
+  /* height: 80%; */
+  max-width: 45rem;
+  margin: auto;
+  /* margin-top: 6rem; */
+  /* margin: auto; */
+  background: white;
+  box-shadow: 0px 0px 31.9358px 19.1615px rgba(0, 0, 0, 0.10);
+  font-family: Poppins;
+  color: #595959;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+
+
+
+.create-camp header,.ab-test header,.sending-Campaign header,.existing-email header,.approving-Campaign header,.my-Campaign header{
+  color: #DE7FD3;
+  text-align: center;
+  font-weight: 800;
+  background: #09203f;
+  font-size: 1.5rem;
+  font-family: Roboto Slab;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.create-camp-form ,.ab-test-form ,.sending-Campaign-form,.existing-email-form ,.approving-Campaign-form,.my-Campaign form{
+  /* margin-left: 7rem;
+  margin-top: 2rem; */
+  margin: 1rem auto ;
+  padding: 1em;
+}
+/* //ab-test-text-box */
+.create-camp div input ,.ab-test div input ,.sending-Campaign div input,.existing-email div input{
+  border: 1.08329px solid #BBBBBB;
+  background: #FFFFFF;
+  width: 100%;
+}
+.create-camp textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1.08329px solid #BBBBBB; 
+    font-size: 0.800rem;
+    resize: none;
+    overflow-y: auto ;
+    font-family: Poppins;
+}
+
+.attach-create-camp{
+     display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100%;
+}
+
+#input-remove-add
+{
+  text-decoration: none;
+  color: #09203f;
+}
+
+
+#my-Campaign-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#my-Campaign-table td,#my-Campaign-table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+#my-Campaign-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #09203f;
+  color: whitesmoke;
+}
+
+
+
+
+
+
+</style>
 </head>
 <body>
+  <header id="upper-header">
+
+    <ul id="nav">
+              <li><a href="./Current.html"><i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard</a></li>
+              <li class="active"><a href="./Email-panel.html" ><i class="fas fa-envelope"></i>&nbsp;Email</a> </li>
+              <li ><a href="./Sms-panel.html" ><i class="fas fa-sms"></i>&nbsp;SMS</a></li>
+              <li><a href="#" ><i class="fas fa-comment-alt"></i>&nbsp;Messenger</a></li>
+              <li><a href="#" ><i class="fas fa-user"></i>&nbsp;Account</a></li>
+    </ul>
+  </header>
 
     <section class="sidebar">
         <div class="logo_content">
@@ -24,44 +502,44 @@
         </div>
         <ul class="nav_list">
         
-          <li >
-            <a href="#" id="create-campaign-email">
+          <li>
+            <a href="#create-camp" class="menu-btn" >
               <i class='bx bx-grid-alt' ></i>
               <span class="links_name">Create a Campaign</span>
             </a>
           </li>
           <li class="active">
-            <a href="#" id="create-email">
+            <a href="#about" class="menu-btn" >
               <i class='bx bx-user' ></i>
               <span class="links_name">Create an Email</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#existing-email" class="menu-btn">
               <i class='bx bx-chat' ></i>
               <span class="links_name">Existing Email</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#ab-tests" class="menu-btn">
               <i class='bx bx-pie-chart-alt-2' ></i>
               <span class="links_name">Email A/B Test</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#sending-Campaign" class="menu-btn">
               <i class='bx bx-folder' ></i>
               <span class="links_name">Sending Campaign</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#approving-Campaign" class="menu-btn">
               <i class='bx bx-cart-alt' ></i>
               <span class="links_name">Approving Campaign</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#my-Campaign" class="menu-btn">
               <i class='bx bx-heart' ></i>
               <span class="links_name">My Campaigns</span>
             </a>
@@ -71,7 +549,7 @@
     
     
       <section class="home_content">
-        <div  class="temp-create"  style="display: none;">
+        <div  class="menu-content about">
            <!--BASIC-->
                 <div class = "basic">
                     <header>
@@ -103,7 +581,7 @@
     
     
          <!--CONTENT-->
-            <div class = "content">
+            <div class ="content">
                <header>
                         <p>•&nbsp;Content&nbsp;•</p> 
                </header><!-- /header --> 
@@ -158,12 +636,12 @@
             </div>     <!--TEMPLATE END-->  
 
   </div> 
-            <div class = "create-camp" >
+  <div class = "menu-content create-camp" >
               <header>
                        <p>•&nbsp;Create Campaign&nbsp;•</p> 
               </header><!-- /header --> 
                 <form class="create-camp-form">
-                   <div class="create-camp-text-box">
+                   <div>
                              <span><label for=""><i>Title:</i></label></span><br>
                              <span><input type="text"></span>
                              
@@ -192,8 +670,181 @@
                 </div><br>
                </form>     <!--content form ends-->
               <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
-            </div>  <!--Create campaign END-->  
-            </section>
+  </div>  <!--Create campaign END-->
+
+  <!-- a/b test  -->
+  <div class = "menu-content ab-tests">
+              <div class="ab-test">
+              <header>
+                          <p>•&nbsp;ADD A/B Test&nbsp;•</p> 
+              </header>
+              <form class="ab-test-form">
+                          <div>
+                                <span style=" display:flex;justify-content:space-between"> 
+                                      Add A/B Test &nbsp;
+                                      <input style="width: min-content; font-size: 1.5rem; float:right; justify-self: center" type="checkbox">
+                                </span>
+      
+                          </div><br>
+   
+                          <div>
+                                <span>
+                                        <select  style="padding: 0rem 0.5rem; width: max-content;height:30px;background-color:whitesmoke;border: 1.08329px solid #BBBBBB;"name="cars" id="cars">
+                                          <option value="">SUBJECT LINE TEST</option>
+                                          <option value="">WHOLE E-MAIL TEST</option>
+                                          
+                                        </select>
+                                </span>
+                              
+
+                          </div><br>
+   
+
+              </form>
+            <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+          </div>
+            
+            <div class="ab-test" style="margin: 6rem auto;">
+              <header>
+                          <p>•&nbsp;SUBECT LINE A/B TESTING &nbsp;•</p> 
+              </header>
+              <form class="ab-test-form">
+                          <div id="new_chq" style="display: flex; justify-content: center; flex-direction: column; flex-wrap: wrap;">
+                            <input type="text" placeholder="Line 1">
+                            <span style="align-self: flex-end;">
+                              <a href='javascript:void();' onclick="add()" id="input-remove-add">
+                                <i class="fas fa-plus-circle"></i>
+                              </a>
+                              <a href='javascript:void();' onclick="remove()" id="input-remove-add">
+                                <i class="fas fa-minus-circle"></i>
+                              </a>
+                                
+                                
+                            </span>
+                           
+                            <input type="hidden" value="1" id="total_chq" placeholder="Line 2">
+                        
+                          </div><br>
+   
+                         
+   
+
+              </form>
+            <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+
+              </div>
+              <!--  -->
+              <div class="ab-test" style="margin: 6rem auto;">
+                <header>
+                            <p>•&nbsp;WHOLE EMAIL A/B Test&nbsp;•</p> 
+                </header>
+                <form class="ab-test-form">
+                            
+     
+                            <div>
+                                  <span>
+                                          Emails:
+                                          <select  style="padding: 0rem 0.5rem; width: max-content;height:30px;background-color:whitesmoke;border: 1.08329px solid #BBBBBB;"name="cars" id="cars">
+                                            <option hidden selected>Select one...</option>
+                                            <option value="">xyz@email.com</option>
+                                            <option value="">xyz@email.com</option>
+                                            
+                                          </select>
+                                  </span>   
+                            </div><br>
+     
+  
+                </form>
+              <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+  
+                </div>
+  </div>  
+  <div class="menu-content sending-Campaign">
+                <header>
+                            <p>•&nbsp;SENDING TIME&nbsp;•</p> 
+                </header>
+                <form class="sending-Campaign-form">
+                            <div>
+                              Send On:
+                              <input id='date-input' type='date'>
+                            </div>
+                </form>
+              <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+          
+
+  </div>
+  <div class="menu-content existing-email">
+                <header>
+                  <p>•&nbsp;EXISTING EMAIL &nbsp;•</p> 
+            </header>
+            <form class="existing-email-form">
+                  <div>
+                    <span>
+                      Emails:
+                      <select  style="padding: 0rem 0.5rem; width: max-content;height:30px;background-color:whitesmoke;border: 1.08329px solid #BBBBBB;"name="cars" id="cars">
+                        <option hidden selected>Select one...</option>
+                        <option value="">xyz@email.com</option>
+                        <option value="">xyz@email.com</option>
+                        
+                      </select>
+              </span>   
+                  </div>
+            </form>
+            <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+
+  </div>
+  <div class="menu-content approving-Campaign">
+                        <header>
+                          <p>•&nbsp;LIST OF CAMPAINGS &nbsp;•</p> 
+                    </header>
+                    <form class="approving-Campaign-form">
+                          <div>
+                            <span>
+                              Campaings:
+                              <select  style="padding: 0rem 0.5rem; width: max-content;height:30px;background-color:whitesmoke;border: 1.08329px solid #BBBBBB;"name="cars" id="cars">
+                                <option hidden selected>Select one...</option>
+                                <option value="">campaign 1</option>
+                                <option value="">campaign 2</option>
+                                
+                              </select>
+                      </span>   
+                          </div><br><br>
+                          <div>
+                            <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE AS DRAFT">  
+                            <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SCHEDULE CAMPAIGN">  
+
+                          </div>
+                    </form>
+                    
+  
+  </div>
+  <div class="menu-content my-Campaign">
+    <header>
+      <p>•&nbsp;EXISTING EMAIL &nbsp;•</p> 
+</header>
+<form class="my-Campaign-form">
+    <table id="my-Campaign-table">
+      <tr>
+        <th>Campaign Name</th>
+        <th>Send On</th>
+        <th>Schedule On</th>
+      </tr>
+      <tr>
+        <td>Campain 1</td>
+        <td> 24/7/2021</td>
+        <td>24/7/2021</td>
+      </tr>
+      <tr>
+        <td>Campain 2</td>
+        <td> 24/7/2021</td>
+        <td>24/7/2021</td>
+      </tr>
+      
+    </table>
+</form>
+  </div>
+  
+  </section>
 <script>
                 let btn = document.querySelector("#btn");
                 let sidebar = document.querySelector(".sidebar");
@@ -208,19 +859,64 @@
                   }
                 }
 
+                $(function(){
+                  $('.nav_list li').click(function(){ 
+                    $(this).addClass('active').siblings().removeClass('active');
+                  }); 
+                  })
 
-                $(document).ready(function(){
-                            $("#create-email").click(function(){
-                            $(".temp-create").show();
-                                      $(".create-camp").hide();
-                                    });
+
+                // $(document).ready(function(){
+                //             $("#create-email").click(function(){
+                //             $(".temp-create").show();
+                //                       $(".create-camp").hide();
+                //                     });
 
 
-                            $("#create-campaign-email").click(function(){
-                              $(".create-camp").show();
-                              $(".temp-create").hide();
-                            });
-                       });
+                //             $("#create-campaign-email").click(function(){
+                //               $(".create-camp").show();
+                //               $(".temp-create").hide();
+                //             });
+                //        });
+
+
+
+
+
+                      //  new 
+                     
+                      var $content = $('.menu-content');
+
+                            function showContent(type) {
+                              $content.hide().filter('.' + type).show();
+                            }
+
+                            $('.nav_list').on('click', '.menu-btn', function(e) {
+                              showContent(e.currentTarget.hash.slice(1));
+                              e.preventDefault();
+                            }); 
+
+                            // show 'about' content only on page load (if you want)
+                            showContent('about');
+
+
+                                 function add(){
+                                    var new_chq_no = parseInt($('#total_chq').val())+1;
+                                    var new_input="<input style='margin:0.3rem auto' type='text' id='new_"+new_chq_no+"'  placeholder='Line "+new_chq_no+"' >";
+                                    $('#new_chq').append(new_input);
+                                    $('#total_chq').val(new_chq_no);
+                                   
+                                  }
+                                  function remove(){
+                                    var last_chq_no = $('#total_chq').val();
+                                    if(last_chq_no>1){
+                                      $('#new_'+last_chq_no).remove();
+                                      $('#total_chq').val(last_chq_no-1);
+                                    }
+                                  }
+
+                                  const element = document.getElementById('date-input');
+                                  element.valueAsNumber = Date.now()-(new Date()).getTimezoneOffset()*60000;
 </script>
     
 </body>

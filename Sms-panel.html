@@ -4,20 +4,367 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sms-panel</title>
 
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://kit.fontawesome.com/03c6f01f66.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
-    <link rel="stylesheet" href="Sms-panel.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <!-- for header -->
+<style>
+  
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+  }
+
+
+
+/**********SIDEBAR*************/
+
+::selection{
+  color: #fff;
+  background: #11101d;
+}
+.sidebar{
+  position: fixed;
+  /* change */
+  margin-top: 0px;
+  /* top: auto; */
+  left: 0;
+  height: 100%;
+  width: 78px;
+  background: #09203f;
+  /*linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);*/
+  padding: 6px 14px;
+  z-index: 9;
+  transition: all 0.2s ease;
+}
+.sidebar.active{
+  width: 250px;
+}
+.sidebar .logo_content .logo{
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+.sidebar.active .logo_content .logo{
+  opacity: 1;
+  pointer-events: none;
+}
+.logo_content .logo i{
+  font-size: 28px;
+  margin-right: 5px;
+}
+.logo_content .logo .logo_name{
+  font-size: 20px;
+  font-weight: 400;
+}
+.sidebar #btn{
+  position: absolute;
+  color: #fff;
+  top: 6px;
+  left: 50%;
+  font-size: 22px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  transform: translateX(-50%);
+}
+.sidebar.active #btn{
+  left: 90%;
+}
+.sidebar ul{
+  margin-top: 20px;
+}
+.sidebar ul li{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin: 5px ;
+  list-style: none;
+  line-height: 50px;
+  
+}
+
+.sidebar ul li a{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 12px;
+  white-space: nowrap;
+  width: 100%;
+  /* height:mazzzzzzz; */
+  transition: all 0.4s ease;
+}
+.sidebar ul li.active a{
+  background: #fff;
+  color: #11101d;
+  
+  
+}
+.sidebar ul li a:hover{
+  color: #11101d;
+  background: #fff;
+}
+.sidebar ul li i{
+  font-size: 18px;
+  font-weight: 400;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+  text-align: center;
+}
+.sidebar .links_name{
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.sidebar.active .links_name{
+  transition: 0s;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+/*******HOME CONTENT******/
+
+ .home_content{
+  
+  margin-left: 78px;
+  padding: 0;
+  
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2px);
+  transition: all 0.5s ease;
+}
+.sidebar.active ~ .home_content{
+  z-index: 1;
+}
+
+
+
+
+/********BASIC********/
+.basic{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1.5px solid #D7E2EF;
+  /* height: 80%; */
+  max-width: 45rem;
+  /* margin: 6rem 0 0 13rem; */
+  margin:auto;
+  background: white;
+  box-shadow: 0px 0px 31.9358px 19.1615px rgba(0, 0, 0, 0.10);
+ 
+}
+
+.basic header{
+  color: #DE7FD3;
+  text-align: center;
+  font-weight: 800;
+  background: #09203f;
+  font-size: 1.5rem;
+  font-family: Roboto Slab;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.basic hr{
+  border: 1.5px solid #DE7FD3;
+  width: 100%;
+}
+
+.basic-form{
+  /* margin-left: 7rem; */
+  margin: 1rem auto ;
+  padding: 1em;
+  /* margin-top: 2rem; */
+}
+/*background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);*/
+.basic-form div{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+        /* for font */
+  font-size: 0.875rem;
+  font-weight: 500;
+  font-family: 'Poppins';
+  text-decoration: none;
+    /* font-weight: 500; */
+    /* color: #C19A6B; */
+  font-style: normal;
+  color: #595959;
+ 
+}
+
+.basic-form div input{
+  border: 1.08329px solid #BBBBBB;
+  background: #FFFFFF;
+  width: 100%;
+}
+
+.attach-email textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px 20px;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+    border: 1.08329px solid #BBBBBB; 
+    font-size: 0.800rem;
+    resize: none;
+    overflow-y: auto ;
+    font-family: Poppins;
+}
+
+.attach-email{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100%;
+}
+ 
+
+
+
+
+/**********Create camp**********/
+
+.create-camp,.create-automated-sms,.create-ab-sms,
+.Approving-Campaign-sms,.my-Campaign-sms,.AB-results,.sms-results{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  border: 1.5px solid #D7E2EF;
+  /* height: 80%; */
+  max-width: 45rem;
+  margin: auto;
+  /* margin-top: 6rem; */
+  /* margin: auto; */
+  background: white;
+  box-shadow: 0px 0px 31.9358px 19.1615px rgba(0, 0, 0, 0.10);
+  font-family: Poppins;
+  color: #595959;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+
+
+
+.create-camp header ,.create-automated-sms header,.create-ab-sms header ,
+.Approving-Campaign-sms header,.my-Campaign-sms header,.AB-results header,.sms-results header{
+  color: #DE7FD3;
+  text-align: center;
+  font-weight: 800;
+  background: #09203f;
+  font-size: 1.5rem;
+  font-family: Roboto Slab;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+}
+
+.create-camp-form ,.create-automated-sms-form,.create-ab-sms-form, 
+.Approving-Campaign-sms-form ,.my-Campaign-sms-form,.AB-results-form,.sms-results-form{
+
+  margin: 1rem auto ;
+  padding: 1em;
+}
+.create-camp div input{
+  border: 1.08329px solid #BBBBBB;
+  background: #FFFFFF;
+  width: 100%;
+}
+.create-camp textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1.08329px solid #BBBBBB; 
+    font-size: 0.800rem;
+    resize: none;
+    overflow-y: auto ;
+    font-family: Poppins;
+}
+
+.attach-create-camp{
+  display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      width: 100%;
+}
+
+
+
+#my-Campaign-sms-table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#my-Campaign-sms-table td,#my-Campaign-sms-table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+#my-Campaign-sms-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #09203f;
+  color: whitesmoke;
+}
+
+.sms-results-variants div{
+min-width: max-content;
+margin: 0.5rem 0.5rem;
+padding:0.2rem 1rem;
+
+border-radius: 3em;
+}
+
+
+</style>
 </head>
 <body>
+  <header id="upper-header">
 
+    <ul id="nav">
+              <li><a href="./Current.html"><i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard</a></li>
+              <li ><a href="./Email-panel.html" ><i class="fas fa-envelope"></i>&nbsp;Email</a> </li>
+              <li class="active"><a href="./Sms-panel.html" ><i class="fas fa-sms"></i>&nbsp;SMS</a></li>
+              <li ><a href="#" ><i class="fas fa-comment-alt"></i>&nbsp;Messenger</a></li>
+              <li><a href="#" ><i class="fas fa-user"></i>&nbsp;Account</a></li>
+    </ul>
+  </header>
     <section class="sidebar">
         <div class="logo_content">
           <div class="logo">
-            <i class='bx bx-mail-send' ></i>
+            <!-- <i class='bx bx-mail-send' ></i> -->
+            <i class="fas fa-sms"></i>
             <div class="logo_name">Sms Panel</div>
           </div>
           <i class='bx bx-menu' id="btn" ></i>
@@ -25,38 +372,59 @@
         <ul class="nav_list">
         
           <li >
-            <a href="#" id="create-campaign">
+            <a href="#create-camp" class="menu-btn" >
               <i class='bx bx-grid-alt' ></i>
               <span class="links_name">Create a Campaign</span>
             </a>
           
           </li>
-          <li>
+          <li class="active">
             <!--  class="active" -->
-            <a href="#" id="create-sms">
+            <a href="#basic" class="menu-btn" >
               <i class='bx bx-user' ></i>
               <span class="links_name">Create a Sms</span>
             </a>
             
           </li>
           <li>
-            <a href="#">
+            <a href="#create-automated-sms" class="menu-btn">
               <i class='bx bx-chat' ></i>
               <span class="links_name">Send automated sms</span>
             </a>
           
           </li>
           <li>
-            <a href="#">
-              <i class='bx bx-pie-chart-alt-2' ></i>
+            <a href="#create-ab-sms" class="menu-btn">
+              <i class='bx bx-pie-chart-alt-2'></i>
               <span class="links_name">Sms A/B Test</span>
             </a>
   
           </li>
           <li>
-            <a href="#">
+            <a href="#AB-results"class="menu-btn">
               <i class='bx bx-folder' ></i>
               <span class="links_name">A/B results</span>
+            </a>
+            
+          </li>
+          <li>
+            <a href="#Approving-Campaign-sms" class="menu-btn">
+              <i class='bx bx-cart-alt' ></i>
+              <span class="links_name">Approving Campaign </span>
+            </a>
+            
+          </li>
+          <li>
+            <a href="#my-Campaign-sms" class="menu-btn">
+              <i class='bx bx-heart' ></i>
+              <span class="links_name">My Sms Campaign</span>
+            </a>
+            
+          </li>
+          <li>
+            <a href="#sms-results" class="menu-btn">
+              <i class='bx bx-bar-chart' ></i>
+              <span class="links_name">Results</span>
             </a>
             
           </li>
@@ -67,7 +435,7 @@
     
       <section class="home_content">
            <!--BASIC-->
-                <div class = "basic" style="display: none;">
+      <div class = "menu-content basic" >
                     <header>
                         <p>•&nbsp;SMS&nbsp;•</p> 
                     </header><!-- /header --> 
@@ -98,10 +466,9 @@
                         </div><br>
                         <div>
                             <label for="fname">Send On:</label>
-                            <input style=" background:whitesmoke;width: max-content;height:30px;" type="date" id="datePicker" name="">
+                            <input style=" background:whitesmoke;width: max-content;height:30px;" type="date" id="date-input" name="">
                             &nbsp;
                             <input  style=" background:whitesmoke;width: max-content;height:30px;"type="time" id="timePicker" name="">
-                            <!-- pattern="[0-9]{2}:[0-9]{2}" -->
                             <script>
                                    
                                    
@@ -126,8 +493,9 @@
 
                                     var date= new Date();
                                     document.getElementById('timePicker').value=formatTime(date);
-                                  
-                                    $('#datePicker').val(new Date().toJSON().slice(0,10));    
+
+                                    const element = document.getElementById('date-input');
+                                  element.valueAsNumber = Date.now()-(new Date()).getTimezoneOffset()*60000;
                                     
 
                             </script>
@@ -135,13 +503,13 @@
                     </form>
             <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
 
-                </div>    <!--BASIC END-->
+    </div>    <!--BASIC END-->
                 
  
 
-              <!--CONTENT-->
-            <div class = "create-camp" >
-              <!-- style="display: none;" -->
+              <!--Create campain-->
+    <div class= "menu-content create-camp" >
+              
               <header>
                        <p>•&nbsp;Create Campaign&nbsp;•</p> 
               </header><!-- /header --> 
@@ -156,8 +524,6 @@
                            <span>
                                <label for="fname"><i>People: </i>45</label> <br>
                                <label for="fname"><i>Blocked: </i>5</label> 
-
-                               <!-- <input style=" background:white;width: max-content;height:30px; border: 1.08329px solid #BBBBBB;" type="date" id="datePicker" name=""> -->
                              </span>
                                
                    </div><br>
@@ -175,11 +541,223 @@
                 </div><br>
                </form>     <!--content form ends-->
               <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
-            </div>  <!--CONTENT END-->
-   
+   </div>  <!--CONTENT END-->
+   <div class= "menu-content create-automated-sms" >
+          <header>
+            <p>•&nbsp;Create Automated Sms&nbsp;•</p> 
+          </header><!-- /header --> 
+          <form class="create-camp-form">
+            <div>
+              <span>
+                Recipents:
+                <select  style="padding: 0rem 0.5rem; width: max-content;height:30px;background-color:whitesmoke;border: 1.08329px solid #BBBBBB;"name="cars" id="cars">
+                  <option hidden selected>Select one...</option>
+                  <option value="">contact  1</option>
+                  <option value="">contacts 2</option>
+                  
+                </select>
+              </span>   
+            </div><br>
+            <div>
+              <label for="fname"><i>Sms Text:</i></label>
+              <textarea style=" width: 100%;min-height: 80px;padding: 12px 20px;margin-bottom: 1rem;
+              box-sizing: border-box;border: 1.08329px solid #BBBBBB; font-size: 0.800rem;
+              resize: none;overflow-y: auto ;font-family: Poppins;" placeholder="Enter content here"></textarea>
+              
+            </div><br>
+            <div>
+              Days to Send:<br>
+                  <span style="display: flex; justify-content: space-evenly; flex-wrap: wrap;">
+                    <input type="checkbox" name="mon" value="mon">
+                    <label for="mon">Mon</label>
+                    <input type="checkbox" name="tue">
+                    <label for="tue">Tue</label>
+                    <input type="checkbox" name="wed">
+                    <label for="wed">Wed</label>
+                    <input type="checkbox" name="thu">
+                    <label for="thu">Thu</label>
+                    <input type="checkbox" name="fri">
+                    <label for="fri">Fri</label>
+                    <input type="checkbox" name="sat">
+                    <label for="sat">Sat</label>
+                    <input type="checkbox" name="sun">
+                    <label for="sun">Sun</label>
+                  <span>
+            </div><br>
+            <div>
+              Time of Recipent <br>
+              <input type="time"  required>&nbsp; To &nbsp;<input type="time"  required>
+            </div><br><br>
+            <div style=" display:flex;justify-content: center;">
+              <input style="width: max-content;align-self: left; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="CANCEL">  
+              <input style="width: max-content;align-self: right; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE">  
+            
+            </div>
+          </form>
+          
+  </div>
+  
+    <div class= "menu-content create-ab-sms" >
+     
+      <header>
+        <p>•&nbsp;A/B TEST&nbsp;•</p> 
+      </header><!-- /header --> 
+      <form class="create-ab-sms-form">
+        <div>
+         Select Test Parameter&nbsp;
+         <select  style="padding: 0rem 0.5rem; width: max-content;height:30px;background-color:#add8e6;border: 1.08329px solid #BBBBBB;"name="cars" id="cars">
+          <option  style="background-color: whitesmoke" hidden selected>Select one...</option>
+          <option  style="background-color: whitesmoke"value="">Subject</option>
+          <option style="background-color: whitesmoke"value="">Sender Details </option>
+          <option style="background-color: whitesmoke" value="">Email content </option>
+          
+        </select>
+        </div> <br> <br>
+        <div>
+          Select the size of Test Group
+          <br>
+          
+          <input id="range"  value="0" type="range" min="0" max="100" step="10" style="width: 100%;"/>
+          <br>
+          <div style="display: flex;flex-wrap: wrap; justify-content: space-between;">
+                  <span style="color: blue;">A&nbsp;<label class="range" for="range">0%</label>of Recipents</span>
+                  <span style="color: orange;">B&nbsp;<label class="range1">0%</label>of Recipents</span>
+          </div>
+          <br>
+          <br>
+          <div>
+                    Decide By:
+                    <br>
+                    <p style="display: flex; justify-content: space-between;flex-wrap: wrap;">
+                    <input type="radio" id="open" >
+                    <label for="open">Open Rate</label><br>
+                    <input type="radio" id="click" >
+                    <label for="click">Click Rate</label><br>
+                    <input type="radio" id="manual" >
+                    <label for="manual">Manual</label>
+                    </p>
+                    
+          </div><br><br>
+          <div>
+            Test Duration<br>
+            
+             
+              <input style="width:3rem"type="number" id="quantity"  value="1" name="quantity" min="1" max="24"> &nbsp;Hours
+          </div>
+        </div>
+      </form>
+      
 
-               </section>
-         
+  </div>
+  <div class="menu-content Approving-Campaign-sms">
+                  <header>
+                    <p>•&nbsp;LIST OF CAMPAINGS &nbsp;•</p> 
+              </header>
+              <form class="Approving-Campaign-sms-form">
+                    <div>
+                      <span>
+                        Campaings:
+                        <select  style="padding: 0rem 0.5rem; width: max-content;height:30px;background-color:whitesmoke;border: 1.08329px solid #BBBBBB;"name="cars" id="cars">
+                          <option hidden selected>Select one...</option>
+                          <option value="">campaign 1</option>
+                          <option value="">campaign 2</option>
+                          
+                        </select>
+                </span>   
+                    </div><br><br>
+                    <div>
+                      <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SAVE AS DRAFT">  
+                      <input style="width: max-content;align-self: center; border:none;background-color: #A966AD;border-radius:20px;padding:1em;color:white;cursor: pointer;margin: 1rem;" type="submit" value="SCHEDULE CAMPAIGN">  
+
+                    </div>
+              </form>
+</div>
+<div class="menu-content my-Campaign-sms">
+            <header>
+              <p>•&nbsp;EXISTING SMS &nbsp;•</p> 
+          </header>
+          <form class="my-Campaign-sms-form">
+            <table id="my-Campaign-sms-table">
+              <tr>
+                <th>Campaign Name</th>
+                <th>Send On</th>
+                <th>Schedule On</th>
+              </tr>
+              <tr>
+                <td>Campain 1</td>
+                <td> 24/7/2021</td>
+                <td>24/7/2021</td>
+              </tr>
+              <tr>
+                <td>Campain 2</td>
+                <td> 24/7/2021</td>
+                <td>24/7/2021</td>
+              </tr>
+              
+            </table>
+          </form>
+</div>
+<div class=" menu-content AB-results" >
+                  <header>
+                    <p>•&nbsp;A/B TEST PARAMETER &nbsp;•</p> 
+                </header>
+                <form class="AB-results-form">
+                  Target Breakdown<br><br>
+                  <div class ="sms-results-variants"style=" display: flex; flex-wrap: wrap;justify-content: space-between; ">
+                         <div style=" border-left: 20px solid pink;"><strong>Variant A</strong>  10%</div> 
+                         <div style="border-left: 20px solid #FFD580"><strong>Variant B</strong>  10%</div> 
+                         <div  style="border-left: 20px solid#ADD8E6"><strong>Remaining</strong>   80%</div> 	
+
+                  </div>
+                </form>
+
+</div>
+<div  class=" menu-content sms-results">
+        <header>
+          <p>•&nbspRESULTS &nbsp;•</p> 
+        </header>
+        
+        <form class="sms-results-form">
+          <div id="piechart"></div>
+
+        </form>
+ 
+
+  
+</div>
+
+</section>
+<!-- for results graph -->
+<script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', 'Hours per Day'],
+  ['Read', 8],
+  ['Completed', 8],
+  ['Clicks', 4],
+  ['Bounced', 2],
+  ['Unsubscribed', 1],
+  ['Mark as Spam', 1]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'width':650, 'height':500,};
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+  $(window).smartresize(function () {
+		chart.draw(data, options);
+		});
+}
+
+
+</script>
              
       <script>
                 let btn = document.querySelector("#btn");
@@ -195,20 +773,33 @@
                 }
 
 
+                $(function(){
+                  $('.nav_list li').click(function(){ 
+                    $(this).addClass('active').siblings().removeClass('active');
+                  }); 
+                  })
+                      var $content = $('.menu-content');
+
+                          function showContent(type) {
+                            $content.hide().filter('.' + type).show();
+                          }
+
+                          $('.nav_list').on('click', '.menu-btn', function(e) {
+                            showContent(e.currentTarget.hash.slice(1));
+                            e.preventDefault();
+                          }); 
+
+                          // show 'basic' content only on page load (if you want)
+                          showContent('basic');
+
+                          document.querySelector("#range").addEventListener("change", function(e){
+                            document.querySelector(".range").textContent=e.currentTarget.value+"%";
+                            document.querySelector(".range1").textContent=e.currentTarget.value+"%";
+                            
+                               })
 
 
-                       $(document).ready(function(){
-                            $("#create-sms").click(function(){
-                            $(".basic").show();
-                                      $(".create-camp").hide();
-                                    });
-
-
-                            $("#create-campaign").click(function(){
-                              $(".create-camp").show();
-                              $(".basic").hide();
-                            });
-                       });
+                          
               
       </script>
     

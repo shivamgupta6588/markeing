@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Summary</title>
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/03c6f01f66.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+   /* background: #C9D6FF;  
+    background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  
+    background: linear-gradient(to right, #E2E2E2, #C9D6FF);
+    background: #dfe9f3;*/
+}
+
+body{
+  margin: 0;background: #dfe9f3;
+}
+#upper-header
+{
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    min-height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    
+  
+}
+#nav{
+    list-style: none;
+    margin:0;
+    width: 100%;
+    background-color: #09203f;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:center;
+    padding: 0.6em 0em;
+
+
+}
+#nav li {
+    color: #E5E5E5;
+    align-items:center;
+    margin: 0.5em ;
+    transition-duration: 0.2s;
+} 
+
+#nav li a{
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 18px;
+    text-transform: uppercase;
+    align-items:center;
+    font-family: 'Poppins';
+    text-decoration: none;
+    font-style: normal;
+    margin: 0em;
+    padding: 0em;
+}
+#nav li.active a{
+  border-top: 5px solid #A966AD; 
+  color: white;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.25);
+}
+::selection{
+  color: #fff;
+  background: #11101d;
+}
+.sidebar{
+  position: fixed;
+  /* change */
+  margin-top: 0px;
+  /* top: auto; */
+  left: 0;
+  height: 100%;
+  width: 78px;
+  background: #09203f;
+  /*linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);*/
+  padding: 6px 14px;
+  z-index: 9;
+  transition: all 0.2s ease;
+}
+.sidebar.active{
+  width: 250px;
+}
+.sidebar .logo_content .logo{
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+.sidebar.active .logo_content .logo{
+  opacity: 1;
+  pointer-events: none;
+}
+.logo_content .logo i{
+  font-size: 28px;
+  margin-right: 5px;
+}
+.logo_content .logo .logo_name{
+  font-size: 20px;
+  font-weight: 400;
+}
+.sidebar #btn{
+  position: absolute;
+  color: #fff;
+  top: 6px;
+  left: 50%;
+  font-size: 22px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  transform: translateX(-50%);
+}
+.sidebar.active #btn{
+  left: 90%;
+}
+.sidebar ul{
+  margin-top: 20px;
+}
+.sidebar ul li{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin: 5px ;
+  list-style: none;
+  line-height: 50px;
+  
+}
+
+.sidebar ul li a{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 12px;
+  white-space: nowrap;
+  width: 100%;
+  /* height:mazzzzzzz; */
+  transition: all 0.4s ease;
+}
+.sidebar ul li.active a{
+  background: #fff;
+  color: #11101d;
+  
+  
+}
+.sidebar ul li a:hover{
+  color: #11101d;
+  background: #fff;
+}
+.sidebar ul li i{
+  font-size: 18px;
+  font-weight: 400;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+  text-align: center;
+}
+.sidebar .links_name{
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.sidebar.active .links_name{
+  transition: 0s;
+  opacity: 1;
+  pointer-events: auto;
+}
+/****HOME CONTENT****/
+
+.home_content{
+  /* position: absolute; 
+   height: 100%;
+  width: calc(100% - 78px);
+  left: 78px; */
+  /*background: #dfe9f3;
+  /*#f3e7e9;*/
+  margin-left: 78px;
+  /* margin: 0; */
+  padding: 0;
+  /* top: 0; */
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2px);
+  transition: all 0.5s ease;
+  /* background: #C9D6FF;  /* fallback for old browsers */
+/*background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+/*background: linear-gradient(to right, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.sidebar.active ~ .home_content{
+  z-index: 1;
+}
+
+/*.upper-nav{
+  background: white;
+}*/
+
+.upper-nav-list{
+  display: flex;
+  flex-direction: row; 
+  list-style-type: none;
+  justify-content: space-around;
+  color: #595959;
+  text-decoration: none;
+  background: #fff;
+  margin-bottom: 12px;
+}
+
+.upper-nav-list li{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: transparent;
+}
+
+.upper-nav-list li span:hover{
+  color: #09203f;
+}
+
+.upper-nav-list li span{
+  color: #595959;
+  background: transparent;
+}
+
+.upper-nav-list a{
+  text-decoration: none;
+  /*text-decoration-line: underline;
+  text-decoration-color: #DE7FD3; /*#FCA311*/
+  /*text-decoration-thickness: 3px;*/
+  font-weight: 500;
+  background: none;
+
+}
+
+.heading{
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: #424242;
+  background: #00B4DB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  overflow: hidden;
+
+  padding-top: 0.87rem;
+  padding-bottom: 0.87rem;
+  padding-left: 0.87rem;
+  margin-left: 12px;
+  margin-right: 12px;
+
+  box-shadow: 3.88174px -3.88174px 11.6452px 5.82261px rgba(0, 0, 0, 0.15), -3.88174px 3.88174px 11.6452px 5.82261px rgba(0, 0, 0, 0.25);
+}
+
+.upper-graph{
+  display: flex;
+  flex-direction: row;
+  margin: 12px 12px;
+}
+
+/*.upper-graph > *{
+  flex: 0 0 50em;
+} */
+
+.upper-graph .send-text{
+  background: #fff;
+  margin-right: 12px;
+  border: 1px solid #d5d5d5;
+  width: 35%;
+}
+
+.upper-graph .clicks{
+  background: #fff;
+  border: 1px solid #d5d5d5;
+  width: 65%;
+}
+
+.lower-graph{
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.lower-graph > *{
+  flex: auto 3;
+}
+
+.lower-graph .clicks-to-open{
+  background: #fff;
+  margin-right: 12px;
+  border: 1px solid #d5d5d5;
+}
+
+.lower-graph .summary{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #fff;
+  border: 1px solid #d5d5d5;
+}
+
+
+</style>
+</head>
+<body>
+	<header id="upper-header">
+
+		<ul id="nav">
+				  <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard</a></li>
+				  <li ><a href="./Email-panel.html" ><i class="fas fa-envelope"></i>&nbsp;Email</a> </li>
+				  <li ><a href="./Sms-panel.html" ><i class="fas fa-sms "></i>&nbsp;SMS</a></li>
+				  <li><a href="#" ><i class="fas fa-comment-alt"></i>&nbsp;Messenger</a></li>
+				  <li><a href="#" ><i class="fas fa-user"></i>&nbsp;Account</a></li>
+		</ul>
+	  </header>
+	<section class="sidebar">
+        <div class="logo_content">
+          <div class="logo">
+            <i class='fas fa-tachometer-alt' ></i>
+            <div class="logo_name">Dashboard </div>
+          </div>
+          <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav_list">
+        
+          <!--<li >
+            <a href="#" id="create-campaign-email">
+              <i class='bx bx-grid-alt' ></i>
+              <span class="links_name">Create a Campaign</span>
+            </a>
+          </li>-->
+          <li>
+            <a href="Current.html" id="create-email">
+              <i class='bx bx-user'></i>
+              <span class="links_name">Current Campaign</span>
+            </a>
+          </li>
+          <li>
+            <a href="Previous.html">
+              <i class='bx bx-chat' ></i>
+              <span class="links_name">Previous Camapign</span>
+            </a>
+          </li>
+          <li class="active">
+            <a href="#">
+              <i class='bx bx-pie-chart-alt-2' style="background:#fff;" ></i>
+              <span class="links_name" style="background:#fff;">Summary</span>
+            </a>
+          </li>
+         
+      </section>    <!-- SIDEBAR ENDS-->
+
+      <section class="home_content"> 
+
+     
+
+      <section class = "heading">
+      	Welcome to Dashboard!
+
+      </section>
+
+      <section class = "graph-section">
+      	<div class = "upper-graph">
+      		<div class ="send-text">
+      			<div id="pie-chart-send-text" style="height: 300px; width: 100%;"></div>
+      		</div>
+      		<div class ="clicks">
+      			<div id="bar-graph-clicks" style="height: 300px; width: 100%;"></div>
+      		</div>
+      	</div>
+
+      	<div class = "lower-graph">
+      		<div class = "clicks-to-open">
+      			<div id="graph-clicks-to-open" style="height: 300px; width: 100%;"></div>
+      		</div>
+      		<div class = "summary">
+      			<div id="summary-pie-chart1" style="height: 300px; width: 40%; padding-left:1rem;"></div>
+      			<div id="summary-pie-chart2" style="height: 300px; width: 40%;"></div>
+      		</div>
+      	</div>
+
+      </section>
+
+  <!--SIDEBAR-->
+      <script>
+                let btn = document.querySelector("#btn");
+                let sidebar = document.querySelector(".sidebar");
+              
+             
+                btn.onclick = function() {
+                  sidebar.classList.toggle("active");
+                  if(btn.classList.contains("bx-menu")){
+                    btn.classList.replace("bx-menu" , "bx-menu-alt-right");
+                  }else{
+                    btn.classList.replace("bx-menu-alt-right", "bx-menu");
+                  }
+                }
+
+
+                $(document).ready(function(){
+                            $("#create-email").click(function(){
+                            $(".temp-create").show();
+                                      $(".create-camp").hide();
+                                    });
+
+
+                            $("#create-campaign-email").click(function(){
+                              $(".create-camp").show();
+                              $(".temp-create").hide();
+                            });
+                       });
+        </script>    <!--SIDEBAR END-->
+
+
+        <!--SEND TEXT PIE CHART-->
+        <script>
+window.onload = function() {
+
+var chart1 = new CanvasJS.Chart("pie-chart-send-text", {
+	theme: 'light2',
+	animationEnabled: true,
+	exportEnabled: true,
+	title: {
+		text: "Send Text",
+		fontFamily: "arial", 
+		fontSize: 20
+	},
+	data: [{
+		type: "pie",
+		startAngle: 30,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{label}",
+		dataPoints: [
+			{y: 38, label: "For subject line Email-I", color: "orange", exploded: true},
+			{y: 32, label: "For subject line Email-II", exploded: true},
+			{y: 10, label: "For subject line Email-III", exploded: true},
+		/*	{y: 4.91, label: "Yahoo"},
+			{y: 1.26, label: "Others"} */
+		]
+	}]
+});
+chart1.render();
+
+}
+ /*SIDE TEXT PIE CHART END*/
+
+
+/*BAR GRAPH CLICKS*/
+
+$(document).ready(function () {
+	
+var chart2 = new CanvasJS.Chart("bar-graph-clicks", {
+	theme: 'light2',
+	animationEnabled: true,
+	exportEnabled: true,
+	
+	title:{
+		text:"Clicks",
+		fontFamily: "arial",
+		fontSize: 20
+	},
+	axisX:{
+		interval: 1
+	},
+	axisY2:{
+		interlacedColor: "rgba(1,77,101,.2)",
+		gridColor: "rgba(1,77,101,.1)",
+	},
+	data: [{
+		type: "bar",
+		name: "companies",
+		axisYType: "secondary",
+		color: "#014D65",
+		dataPoints: [
+			{ y: 3, label: "A" },
+			{ y: 7, label: "B" },
+			{ y: 5, label: "C" },
+			
+		]
+	}]
+});
+chart2.render();
+
+})   /*BAR GRAPH CLICKS END*/
+
+
+/*CLICKS TO OPEN CHART*/
+
+$(document).ready(function () {
+
+var chart3 = new CanvasJS.Chart("graph-clicks-to-open", {
+	animationEnabled: true,
+	exportEnabled: true,
+	theme: "light2", // "light1", "light2", "dark1", "dark2"
+	title:{
+		text: "Clicks to Open",
+		fontFamily: "arial",
+		fontSize: 20
+	},
+	axisY: {
+		title: "Rates of Clicks/Opens",
+		fontFamily: "arial"
+	},
+	data: [{        
+		type: "column",  
+		dataPoints: [      
+			{ y: 300878, label: "C" },
+			{ y: 266455,  label: "B" },
+			{ y: 169709,  label: "A" },
+			
+		]
+	}]
+});
+chart3.render();
+
+})
+
+/*CLICKS TO OPEN CHART ENDS*/
+
+/*SUMMARY PIE CHART1*/
+	$(document).ready(function() {
+
+var chart4 = new CanvasJS.Chart("summary-pie-chart1", {
+	theme: 'light2',
+	animationEnabled: true,
+	exportEnabled: true,
+	title: {
+		text: "Clicks",
+		fontFamily: "arial",
+		fontSize: 20
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{name}",
+		indexLabelPlacement: "inside",
+		dataPoints: [
+			{y: 45, name: "A", color:"#eef3ff"},
+			{y: 60, name: "B", color:"#4fdcee"},
+			{y: 25, name: "C", color:"#3d90ed"}		]
+	}]
+});
+chart4.render();
+
+})
+/*SUMMARY PIE CHART1 END*/
+
+
+/*SUMMARY PIE CHART2*/
+	$(document).ready(function() {
+
+var chart5 = new CanvasJS.Chart("summary-pie-chart2", {
+	theme: 'light2',
+	animationEnabled: true,
+	exportEnabled: true,
+	title: {
+		text: "Unsubscribed",
+		fontFamily: "arial",
+		fontSize: 20
+	},
+	data: [{
+		type: "pie",
+		startAngle: 240,
+		yValueFormatString: "##0.00\"%\"",
+		indexLabel: "{name}",
+		indexLabelPlacement: "inside",
+		dataPoints: [
+			{y: 10, name: "A", color: "#d4e6ff"},
+			{y: 30, name: "B", color: "#2e3743"},
+			{y: 60, name: "C", color: "#ff6464"}
+			
+		]
+	}]
+});
+chart5.render();
+
+})
+/*SUMMARY PIE CHART2 END*/
+
+</script>
+
+</body>
+</html>

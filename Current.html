@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Dashboard</title>
+	<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/03c6f01f66.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  
+
+    <script type="text/javascript">
+
+      /*FUNNEL CHART*/
+      window.onload = function () {
+      
+      var chart = new CanvasJS.Chart("chartContainer", {
+        title: {
+          text: "Conversion Funnel",
+          fontFamily: "arial",
+          fontSize: 20
+        },
+
+        data: [{
+          type: "funnel",
+          indexLabelFontSize: 15,
+          indexLabel: "{name} [{y}%]",
+          indexLabelPlacement: "inside",
+          neckHeight: 0,
+          toolTipContent: "{name} - {y}%",
+          dataPoints: [
+            { y: 70, name: "Sends", exploded: true, color: "#FED049" },
+            { y: 35, name: "Opens", exploded: true, color: "#007580"  },
+            { y: 30, name: "Clicks", exploded: true, color: "#46466b"  },
+            { y: 25, name: "Conversions", exploded: true, color: "#D8EBE4"  }
+          ]
+        }]
+      });
+      chart.render();
+      }    
+
+
+      /*OPEN RATE GRAPH*/
+      $(document).ready(function () {
+
+      var chart = new CanvasJS.Chart("open-rate-graph", {
+        animationEnabled: true,
+    
+        axisY: {
+          includeZero: true,
+          suffix: "%"
+        },
+
+        axisX:{
+          title: 'fix a period'
+        },
+
+        data: [{
+          type: "stepArea",
+          color: "#95dcd1",
+           
+          markerSize: 5,
+          xValueFormatString: "YYYY",
+          yValueFormatString: "#,##0.##\"%\"",
+          dataPoints: [
+            { x: new Date(2010, 0), y: 34 },
+            { x: new Date(2011, 0), y: 73 },
+            { x: new Date(2012, 0), y: 78 },
+            { x: new Date(2013, 0), y: 82 },
+            { x: new Date(2014, 0), y: 70 },
+            { x: new Date(2015, 0), y: 86 },
+            { x: new Date(2016, 0), y: 80 }
+          ]
+        }]
+      });
+      chart.render();
+      })
+
+      /*CTR GRAPH*/
+      $(document).ready(function () {
+
+      var chart = new CanvasJS.Chart("ctr-graph", {
+        animationEnabled: true,
+        
+        axisX: {
+          title: 'over a period',
+          minimum: new Date(2015, 01, 25),
+          maximum: new Date(2017, 02, 15),
+          valueFormatString: "MMM YY"
+        },
+        axisY: {
+          titleFontColor: "#4F81BC",
+          includeZero: true,
+          suffix: "mn"
+        },
+        data: [{
+          indexLabelFontColor: "darkSlateGray",
+          color: "#fb8368",
+          name: "views",
+          type: "area",
+          yValueFormatString: "#,##0.0mn",
+          dataPoints: [
+            { x: new Date(2015, 02, 1), y: 74.4, label: "Q1-2015" },
+            { x: new Date(2015, 05, 1), y: 61.1, label: "Q2-2015" },
+            { x: new Date(2015, 08, 1), y: 47.0, label: "Q3-2015" },
+            { x: new Date(2015, 11, 1), y: 48.0, label: "Q4-2015" },
+            { x: new Date(2016, 02, 1), y: 74.8, label: "Q1-2016" },
+            { x: new Date(2016, 05, 1), y: 51.1, label: "Q2-2016" },
+            { x: new Date(2016, 08, 1), y: 40.4, label: "Q3-2016" },
+            { x: new Date(2016, 11, 1), y: 45.5, label: "Q4-2016" },
+            { x: new Date(2017, 02, 1), y: 78.3, label: "Q1-2017", indexLabel: "Highest", markerColor: "red" }
+          ]
+        }]
+      });
+      chart.render();
+      })
+
+      /*CONVERSION RATE GRAPH*/
+      $(document).ready(function () {
+
+      var chart = new CanvasJS.Chart("CRate-graph", {
+        animationEnabled: true,
+        
+        axisX: {
+          title:'over a period'
+        },
+        axisY: {
+          includeZero: true,
+          suffix: "%"
+        },
+        data: [{
+          type: "stepArea",
+          color: "#e37fe9",
+          markerSize: 5,
+          xValueFormatString: "YYYY",
+          yValueFormatString: "#,##0.##\"%\"",
+          dataPoints: [
+            { x: new Date(2010, 0), y: 34 },
+            { x: new Date(2011, 0), y: 73 },
+            { x: new Date(2012, 0), y: 78 },
+            { x: new Date(2013, 0), y: 82 },
+            { x: new Date(2014, 0), y: 70 },
+            { x: new Date(2015, 0), y: 86 },
+            { x: new Date(2016, 0), y: 80 }
+          ]
+        }]
+      });
+      chart.render();
+      })
+
+      </script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+}
+body{
+  margin: 0;background: #dfe9f3;
+}
+
+
+#upper-header
+{
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    min-height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    
+  
+}
+#nav{
+    list-style: none;
+    margin:0;
+    width: 100%;
+    background-color: #09203f;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:center;
+    padding: 0.6em 0em;
+
+
+}
+#nav li {
+    color: #E5E5E5;
+    align-items:center;
+    margin: 0.5em ;
+    transition-duration: 0.2s;
+} 
+
+#nav li a{
+    cursor: pointer;
+    color: whitesmoke;
+    font-size: 18px;
+    text-transform: uppercase;
+    align-items:center;
+    font-family: 'Poppins';
+    text-decoration: none;
+    font-style: normal;
+    margin: 0em;
+    padding: 0em;
+}
+#nav li.active a{
+  border-top: 5px solid #A966AD; 
+  color: white;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.25);
+}
+
+::selection{
+  color: #fff;
+  background: #11101d;
+}
+.sidebar{
+  position: fixed;
+  /* change */
+  margin-top: 0px;
+  /* top: auto; */
+  left: 0;
+  height: 100%;
+  width: 78px;
+  background: #09203f;
+  /*linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);*/
+  padding: 6px 14px;
+  z-index: 9;
+  transition: all 0.2s ease;
+}
+.sidebar.active{
+  width: 250px;
+}
+.sidebar .logo_content .logo{
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+.sidebar.active .logo_content .logo{
+  opacity: 1;
+  pointer-events: none;
+}
+.logo_content .logo i{
+  font-size: 28px;
+  margin-right: 5px;
+}
+.logo_content .logo .logo_name{
+  font-size: 20px;
+  font-weight: 400;
+}
+.sidebar #btn{
+  position: absolute;
+  color: #fff;
+  top: 6px;
+  left: 50%;
+  font-size: 22px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  transform: translateX(-50%);
+}
+.sidebar.active #btn{
+  left: 90%;
+}
+.sidebar ul{
+  margin-top: 20px;
+}
+.sidebar ul li{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin: 5px ;
+  list-style: none;
+  line-height: 50px;
+  
+}
+
+.sidebar ul li a{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 12px;
+  white-space: nowrap;
+  width: 100%;
+  /* height:mazzzzzzz; */
+  transition: all 0.4s ease;
+}
+.sidebar ul li.active a{
+  background: #fff;
+  color: #11101d;
+  
+  
+}
+.sidebar ul li a:hover{
+  color: #11101d;
+  background: #fff;
+}
+.sidebar ul li i{
+  font-size: 18px;
+  font-weight: 400;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+  text-align: center;
+}
+.sidebar .links_name{
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+.sidebar.active .links_name{
+  transition: 0s;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/****HOME CONTENT****/
+
+.home_content{
+  /* position: absolute; 
+   height: 100%;
+  width: calc(100% - 78px);
+  left: 78px; */
+  /*background: #dfe9f3;
+  /*#f3e7e9;*/
+  margin-left: 78px;
+  /* margin: 0; */
+  padding: 0;
+  /* top: 0; */
+  box-shadow: 0 5px 10px rgba(0,0,0,0.2px);
+  transition: all 0.5s ease;
+  
+}
+.sidebar.active ~ .home_content{
+  z-index: 1;
+}
+
+/*.upper-nav{
+  background: white;
+}*/
+
+.upper-nav-list{
+  display: flex;
+  flex-direction: row; 
+  list-style-type: none;
+  justify-content: space-around;
+  color: #595959;
+  text-decoration: none;
+  background: #fff;
+  margin-bottom: 12px;
+}
+
+.upper-nav-list li{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  background: transparent;
+}
+
+.upper-nav-list li span:hover{
+  color: #09203f;
+}
+
+.upper-nav-list li span{
+  color: #595959;
+  background: transparent;
+}
+
+.upper-nav-list a{
+  text-decoration: none;
+
+  font-weight: 500;
+  background: none;
+
+}
+
+.heading{
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: #424242;
+  background: #00B4DB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  padding-top: 0.87rem;
+  padding-bottom: 0.87rem;
+  padding-left: 0.87rem;
+  margin-left: 12px;
+  margin-right: 12px;
+  box-shadow: 3.88174px -3.88174px 11.6452px 5.82261px rgba(0, 0, 0, 0.15), -3.88174px 3.88174px 11.6452px 5.82261px rgba(0, 0, 0, 0.25);
+}
+
+
+.content{
+  display: flex;
+  flex-direction: row; 
+  /*justify-content: space-between;
+  margin: 12px 12px;*/
+  padding: 12px;
+  color: #595959;
+}
+
+
+.details{
+  display: flex;
+  flex-direction: column;
+  /*flex-wrap: wrap;*/
+  padding: 2rem;
+  font-weight: 500;
+  background: white;
+  border: 1px solid #d5d5d5;
+  margin-right: 12px;
+}
+
+.details input{
+  background: #fff;
+  border: 1px solid #595959;
+}
+
+.details label{
+  background: #fff;
+}
+
+.funnel{
+  background: white;
+  border: 1px solid #d5d5d5; 
+  /*width: 49.63rem;*/
+  width: 100%;
+
+}
+
+.lower-graphs{
+  display: flex;
+  flex-direction: row; 
+  justify-content: space-between;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+.OpenRate, .CTR, .CRate{
+  background: #fff;
+  /*width: 350px;*/
+  height: 380px;
+  width: 100%;
+  border: 1px solid #DDDDDD;
+}
+
+.lower-graphs .OpenRate, .CTR{
+  margin-right: 12px;
+}
+
+#open-rate-graph, #ctr-graph, #CRate-graph{
+  height: 300px; 
+  width: 335px; 
+  padding-top: 25px; 
+  padding-left: 20px; 
+  padding-right:20px;
+}
+
+.lower-graphs p{
+   font-weight: 500;
+  font-size: 1.2rem;
+  text-align: center;
+  padding-top: 12px;
+}
+
+.lower-graphs hr{
+  color: #F9F9F9;
+  margin-top: 12px;
+}
+
+  
+</style>
+    
+</head>
+<body>
+  <header id="upper-header">
+
+    <ul id="nav">
+              <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i>&nbsp;Dashboard</a></li>
+              <li ><a href="./Email-panel.html" ><i class="fas fa-envelope"></i>&nbsp;Email</a> </li>
+              <li ><a href="./Sms-panel.html" ><i class="fas fa-sms"></i>&nbsp;SMS</a></li>
+              <li><a href="#" ><i class="fas fa-comment-alt"></i>&nbsp;Messenger</a></li>
+              <li><a href="#" ><i class="fas fa-user"></i>&nbsp;Account</a></li>
+    </ul>
+  </header>
+<!--	<div id="sidebar">
+	</div>-->
+	 <section class="sidebar">
+        <div class="logo_content">
+          <div class="logo">
+            <i class='fas fa-tachometer-alt' ></i>
+            <div class="logo_name">Dashboard </div>
+          </div>
+          <i class='bx bx-menu' id="btn" ></i>
+        </div>
+        <ul class="nav_list">
+        
+          <li class="active">
+            <a href="#" id="create-email">
+              <i class='bx bx-user' style="background:#fff;"></i>
+              <span class="links_name" style="background:#fff;">Current Campaign</span>
+            </a>
+          </li>
+          <li>
+            <a href="Previous.html">
+              <i class='bx bx-chat' ></i>
+              <span class="links_name">Previous Camapign</span>
+            </a>
+          </li>
+          <li>
+            <a href="Summary.html">
+              <i class='bx bx-pie-chart-alt-2' ></i>
+              <span class="links_name">Summary</span>
+            </a>
+          </li>
+         
+      </section>    <!-- SIDEBAR ENDS-->
+
+      <section class="home_content"> 
+
+     
+
+      <section class = "heading">
+      	Welcome to Dashboard! <!--<span><i class="fas fa-chart-line"></i></span>-->
+      </section>
+
+
+
+      <section class = "content">
+      	<div class = "details">
+      		
+      		<label for="fname"><span><i class="fas fa-dot-circle" style="color:#FDDB3A;"></i></span>  &nbsp;&nbsp;Open Rate</label>
+            <input style="height:30px; margin-bottom: 1rem; margin-left:1.8rem;"type="text" id="rate" name="rate">
+            <br>
+
+       
+            <label for="fname"><span><i class="fas fa-dot-circle" style="color:#FDDB3A;"></i></span>  &nbsp;&nbsp;CTR</label>
+            <input style="height:30px; margin-bottom: 1rem; margin-left:1.8rem;"type="text" id="rate" name="rate">
+            <br>
+
+            
+            <label for="fname"><span><i class="fas fa-dot-circle" style="color:#FDDB3A;"></i></span>  &nbsp;&nbsp;Conversion Rate</label>
+            <input style="height:30px; margin-left:1.8rem;"type="text" id="rate" name="rate">
+
+      	</div>
+
+      	<div class ="funnel">
+                <div id="chartContainer" style="height: 300px; width: fit-content;"></div>
+                <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+      	</div>
+      </section>
+
+      <section class = "lower-graphs">
+        <div class = "OpenRate">
+           <p>Open Rate</p> 
+           <hr>
+          <div id="open-rate-graph"></div>
+        </div>
+        <div class = "CTR">
+          <p>CTR</p> 
+          <hr>
+
+          <div id="ctr-graph"></div>
+        </div>
+        <div class = "CRate">
+          <p>Conversion Rate</p> 
+          <hr>
+
+          <div id="CRate-graph"></div>
+        </div>
+      </section>
+
+       <!-- Tab links -->
+	<!--	<div class="tab">
+		  <button class="tablinks" onclick="openCity(event, 'OpenRate')">Open Rate</button>
+		  <button class="tablinks" onclick="openCity(event, 'CTR')">CTR</button>
+		  <button class="tablinks" onclick="openCity(event, 'CRate')">Conversion Rate</button>
+		</div> -->
+
+		<!-- Tab content 
+		<div id="OpenRate" class="tabcontent">
+		  <div id="open-rate-graph" style="height: 300px; width: 300px; margin-left:30%;"></div>
+		</div>
+
+		<div id="CTR" class="tabcontent">
+		  <div id="ctr-graph" style="height: 300px; width: 300px; margin-left:30%;"></div>
+		</div>
+
+		<div id="CRate" class="tabcontent">
+		  <div id="CRate-graph" style="height: 300px; width: 300px; margin-left:30%;"></div>
+		</div> -->
+
+      </section>  <!--HOME CONTENT END-->
+
+<!--JS FOR SIDEBAR -->
+      <script>
+                let btn = document.querySelector("#btn");
+                let sidebar = document.querySelector(".sidebar");
+              
+             
+                btn.onclick = function() {
+                  sidebar.classList.toggle("active");
+                  if(btn.classList.contains("bx-menu")){
+                    btn.classList.replace("bx-menu" , "bx-menu-alt-right");
+                  }else{
+                    btn.classList.replace("bx-menu-alt-right", "bx-menu");
+                  }
+                }
+
+
+                $(document).ready(function(){
+                            $("#create-email").click(function(){
+                            $(".temp-create").show();
+                                      $(".create-camp").hide();
+                                    });
+
+
+                            $("#create-campaign-email").click(function(){
+                              $(".create-camp").show();
+                              $(".temp-create").hide();
+                            });
+                       });
+        </script>    
+ 
+
+<!--JS FOR TABS-->
+
+    <!--    <script>
+                function openCity(evt, cityName) {
+			  // Declare all variables
+			  var i, tabcontent, tablinks;
+
+			  // Get all elements with class="tabcontent" and hide them
+			  tabcontent = document.getElementsByClassName("tabcontent");
+			  for (i = 0; i < tabcontent.length; i++) {
+			    tabcontent[i].style.display = "none";
+			  }
+
+			  // Get all elements with class="tablinks" and remove the class "active"
+			  tablinks = document.getElementsByClassName("tablinks");
+			  for (i = 0; i < tablinks.length; i++) {
+			    tablinks[i].className = tablinks[i].className.replace(" active", "");
+			  }
+
+			  // Show the current tab, and add an "active" class to the button that opened the tab
+			  document.getElementById(cityName).style.display = "block";
+			  evt.currentTarget.className += " active";
+			} 
+</script> -->
+	
+</body>
+</html>
