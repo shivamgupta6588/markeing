@@ -331,16 +331,8 @@ body{
 /****HOME CONTENT****/
 
 .home_content{
-  /* position: absolute; 
-   height: 100%;
-  width: calc(100% - 78px);
-  left: 78px; */
-  /*background: #dfe9f3;
-  /*#f3e7e9;*/
   margin-left: 78px;
-  /* margin: 0; */
   padding: 0;
-  /* top: 0; */
   box-shadow: 0 5px 10px rgba(0,0,0,0.2px);
   transition: all 0.5s ease;
   
@@ -349,9 +341,6 @@ body{
   z-index: 1;
 }
 
-/*.upper-nav{
-  background: white;
-}*/
 
 .upper-nav-list{
   display: flex;
@@ -408,8 +397,6 @@ body{
 .content{
   display: flex;
   flex-direction: row; 
-  /*justify-content: space-between;
-  margin: 12px 12px;*/
   padding: 12px;
   color: #595959;
 }
@@ -499,8 +486,7 @@ body{
               <li><a href="#" ><i class="fas fa-user"></i>&nbsp;Account</a></li>
     </ul>
   </header>
-<!--	<div id="sidebar">
-	</div>-->
+
 	 <section class="sidebar">
         <div class="logo_content">
           <div class="logo">
@@ -586,25 +572,7 @@ body{
         </div>
       </section>
 
-       <!-- Tab links -->
-	<!--	<div class="tab">
-		  <button class="tablinks" onclick="openCity(event, 'OpenRate')">Open Rate</button>
-		  <button class="tablinks" onclick="openCity(event, 'CTR')">CTR</button>
-		  <button class="tablinks" onclick="openCity(event, 'CRate')">Conversion Rate</button>
-		</div> -->
-
-		<!-- Tab content 
-		<div id="OpenRate" class="tabcontent">
-		  <div id="open-rate-graph" style="height: 300px; width: 300px; margin-left:30%;"></div>
-		</div>
-
-		<div id="CTR" class="tabcontent">
-		  <div id="ctr-graph" style="height: 300px; width: 300px; margin-left:30%;"></div>
-		</div>
-
-		<div id="CRate" class="tabcontent">
-		  <div id="CRate-graph" style="height: 300px; width: 300px; margin-left:30%;"></div>
-		</div> -->
+  
 
       </section>  <!--HOME CONTENT END-->
 
@@ -639,30 +607,6 @@ body{
         </script>    
  
 
-<!--JS FOR TABS-->
-
-    <!--    <script>
-                function openCity(evt, cityName) {
-			  // Declare all variables
-			  var i, tabcontent, tablinks;
-
-			  // Get all elements with class="tabcontent" and hide them
-			  tabcontent = document.getElementsByClassName("tabcontent");
-			  for (i = 0; i < tabcontent.length; i++) {
-			    tabcontent[i].style.display = "none";
-			  }
-
-			  // Get all elements with class="tablinks" and remove the class "active"
-			  tablinks = document.getElementsByClassName("tablinks");
-			  for (i = 0; i < tablinks.length; i++) {
-			    tablinks[i].className = tablinks[i].className.replace(" active", "");
-			  }
-
-			  // Show the current tab, and add an "active" class to the button that opened the tab
-			  document.getElementById(cityName).style.display = "block";
-			  evt.currentTarget.className += " active";
-			} 
-</script> -->
 	
 </body>
 </html>
